@@ -4,8 +4,8 @@ from users.models import Users
 
 
 class Project(models.Model):
-	name = models.CharField(max_length=32)
-	link = models.CharField(max_length=128, blank=True)
+	name = models.CharField(max_length=32, unique=True)
+	link = models.URLField(blank=True)
 	users = models.ManyToManyField(Users)
 	
 	def __str__(self):
@@ -13,9 +13,9 @@ class Project(models.Model):
 
 
 class TodoNote(models.Model):
-	project = models.OneToOneField(Project, on_delete=models.CASCADE)
+	project = models.ForeignKey(Project, on_delete=models.CASCADE)
 	text = models.TextField()
 	creaton_date = models.DateField(auto_now_add=True)
 	modifided_date = models.DateField(auto_now=True)
-	user = models.ForeignKey(Users, models.PROTECT)
+	user = models.ForeignKey(Users, on_delete=models.PROTECT)
 	is_active = models.BooleanField(default=True)

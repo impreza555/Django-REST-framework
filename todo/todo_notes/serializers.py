@@ -1,11 +1,9 @@
-from rest_framework.serializers import ModelSerializer, StringRelatedField
+from rest_framework.serializers import ModelSerializer, HyperlinkedIdentityField, HyperlinkedRelatedField
 from todo_notes.models import Project, TodoNote
-from users.serializers import UsersModelSerializer
 
 
 class ProjectSerializer(ModelSerializer):
-	# users = StringRelatedField(many=True)
-	users = StringRelatedField(many=True)
+	# users = HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True)
 	
 	class Meta:
 		model = Project
@@ -13,8 +11,8 @@ class ProjectSerializer(ModelSerializer):
 
 
 class TodoNoteSerializer(ModelSerializer):
-	user = UsersModelSerializer()
+	# user = HyperlinkedIdentityField(view_name='user-detail')
 	
 	class Meta:
 		model = TodoNote
-		fields = '__all__'
+		exclude = ('is_active',)
