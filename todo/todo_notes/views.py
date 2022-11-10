@@ -30,9 +30,8 @@ class TodoNoteModelViewSet(ModelViewSet):
 	pagination_class = TodoNoteLimitOffsetPagination
 	
 	def destroy(self, request, *args, **kwargs):
-		partial = kwargs.pop('partial', True)
 		instance = self.get_object()
-		serializer = self.get_serializer(instance, data=request.data, partial=partial)
+		serializer = self.get_serializer(instance, data=request.data, partial=True)
 		serializer.is_valid(raise_exception=True)
 		serializer.instance.is_active = False
 		serializer.save()
