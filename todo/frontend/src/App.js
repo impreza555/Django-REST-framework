@@ -9,6 +9,10 @@ import Menu from './components/Menu.js';
 import Footer from './components/Footer.js';
 
 
+const DOMIAN = 'http://127.0.0.1:8000/api/'
+const get_url = (link) => `${DOMIAN}${link}`
+
+
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -21,7 +25,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/users/')
+        axios.get(get_url('users'))
             .then(response => {
                 const users = response.data.results
                     this.setState(
