@@ -5,7 +5,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from todo_notes.filters import ProjectFilter
 from todo_notes.models import Project, TodoNote
-from todo_notes.serializers import ProjectSerializer, TodoNoteSerializer
+from todo_notes.serializers import ProjectModelSerializer, TodoNoteModelSerializer
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -18,14 +18,14 @@ class TodoNoteLimitOffsetPagination(LimitOffsetPagination):
 
 class ProjectModelViewSet(ModelViewSet):
 	queryset = Project.objects.all()
-	serializer_class = ProjectSerializer
+	serializer_class = ProjectModelSerializer
 	pagination_class = ProjectLimitOffsetPagination
 	filterset_class = ProjectFilter
 
 
 class TodoNoteModelViewSet(ModelViewSet):
 	queryset = TodoNote.objects.all()
-	serializer_class = TodoNoteSerializer
+	serializer_class = TodoNoteModelSerializer
 	filterset_fields = ['project']
 	pagination_class = TodoNoteLimitOffsetPagination
 	

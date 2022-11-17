@@ -12,7 +12,7 @@ const UserItem = ({user}) => {
     );
 }
 
-const UserList = ({users}) => {
+const UsersList = ({users}) => {
     return (
         <table className="table">
             <th>Username</th>
@@ -24,4 +24,4 @@ const UserList = ({users}) => {
     );
 }
 
-export default UserList;
+export default UsersList;
