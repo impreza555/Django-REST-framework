@@ -22,7 +22,7 @@ const TodoNotesList = ({todoNotes}) => {
             <th>Дата создания</th>
             <th>Дата изменения</th>
             <th>Пользователь</th>
-            {todoNotes.map((todoNote) => <TodoNoteItem todoNote={todoNote} />)}
+            {todoNotes.map((todoNote) => <TodoNoteItem todoNote={todoNote}/>)}
         </table>
     );
 }

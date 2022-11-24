@@ -18,7 +18,7 @@ const ProjectsList = ({projects}) => {
             <th>Название</th>
             <th>Ссылка</th>
             <th>Пользователи</th>
-            {projects.map((project) => <ProjectItem project={project} />)}
+            {projects.map((project) => <ProjectItem project={project}/>)}
         </table>
     );
 }

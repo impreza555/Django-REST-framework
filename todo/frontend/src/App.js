@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 //import logo from './logo.svg';
 //import './App.css';
 import './bootstrap/css/bootstrap.min.css';
@@ -14,7 +14,7 @@ import Footer from './components/Footer.js';
 
 const DOMIAN = 'http://127.0.0.1:8000/api/'
 const get_url = (link) => `${DOMIAN}${link}`
-const NotFound404 = ({ location }) => {
+const NotFound404 = ({location}) => {
     return (
         <div>
             <h1>Страница по адресу '{location.pathname}' не найдена</h1>
@@ -42,52 +42,53 @@ class App extends React.Component {
         axios.get(get_url('users/'))
             .then(response => {
                 const users = response.data.results
-                    this.setState(
-                        {
-                            'users': users
-                        }
+                this.setState(
+                    {
+                        'users': users
+                    }
                 );
             }).catch(error => console.log(error));
 
         axios.get(get_url('projects/'))
             .then(response => {
                 const projects = response.data.results
-                    this.setState(
-                        {
-                            'projects': projects
-                        }
+                this.setState(
+                    {
+                        'projects': projects
+                    }
                 );
             }).catch(error => console.log(error));
 
         axios.get(get_url('todo_notes/'))
             .then(response => {
                 const todo_notes = response.data.results
-                    this.setState(
-                        {
-                            'todo_notes': todo_notes
-                        }
+                this.setState(
+                    {
+                        'todo_notes': todo_notes
+                    }
                 );
             }).catch(error => console.log(error));
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <BrowserRouter>
                     <header>
-                        <Menu menuItems={this.state.menuItems} />
+                        <Menu menuItems={this.state.menuItems}/>
                     </header>
                     <main role="main" className="flex-shrink-0">
                         <div className="container">
                             <Routes>
-                                <Route exact path='/' element={<UsersList users={this.state.users} />} />
-                                <Route exact path='/projects' element={<ProjectsList projects={this.state.projects} />} />
-                                <Route exact path='/todo_notes' element={<TodoNotesList todoNotes={this.state.todo_notes} />} />
-                                <Route element={NotFound404} />
+                                <Route exact path='/' element={<UsersList users={this.state.users}/>}/>
+                                <Route exact path='/projects' element={<ProjectsList projects={this.state.projects}/>}/>
+                                <Route exact path='/todo_notes'
+                                       element={<TodoNotesList todoNotes={this.state.todo_notes}/>}/>
+                                <Route element={NotFound404}/>
                             </Routes>
                         </div>
                     </main>
-                    <Footer />
+                    <Footer/>
                 </BrowserRouter>
             </div>
         );
