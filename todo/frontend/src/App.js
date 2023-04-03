@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './bootstrap/css/bootstrap.min.css';
 import './bootstrap/css/sticky-footer-navbar.css';
 import UsersList from './components/Users.js';
-import ProjectsList from './components/Projects.js';
+import {ProjectsList, ProjectDetail} from './components/Projects.js';
 import TodoNotesList from './components/TodoNotes.js';
 import Menu from './components/Menu.js';
 import Footer from './components/Footer.js';
@@ -84,6 +84,7 @@ class App extends React.Component {
                                 <Route exact path='/projects' element={<ProjectsList projects={this.state.projects}/>}/>
                                 <Route exact path='/todo_notes'
                                        element={<TodoNotesList todoNotes={this.state.todo_notes}/>}/>
+                                <Route path='/projects/:id' element={<ProjectDetail projects={this.state.projects}/>}/>
                                 <Route element={NotFound404}/>
                             </Routes>
                         </div>
